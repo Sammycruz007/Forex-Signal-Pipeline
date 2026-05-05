@@ -27,3 +27,4 @@ mlruns/
 *.log
 
 EOF
+/data

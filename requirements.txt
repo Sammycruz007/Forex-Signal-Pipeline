@@ -1,0 +1,42 @@
+# Data
+yfinance == 0.2.4
+pandas ==2.2.2
+numpy == 1.26.4
+pandas-ta == 0.314b
+
+#models
+prophet == 1.1.5
+tensorflow == 2.16.1
+scikit-learn == 1.4.2
+joblib == 1.4.2
+
+#Experiment Tracking
+mlfow == 2.13.0
+
+#serving
+fastapi == 0.111.0
+uvicorn == 0.30.1
+pydantic == 2.7.1
+
+#Dashboard
+streamlit == 1.35.0
+plotly == 5.22.0
+
+#Orchestration
+apache-airflow == 2.9.1
+
+#Versioning
+dvc == 3.51.2
+
+# Testing
+pytest == 8.2.0
+pytest-cov == 5.0.0
+
+#Utilitties
+python-dotenv == 1.0.1
+pyyaml == 6.0.1
+loguru == 0.7.2
+EOF
+
+
+

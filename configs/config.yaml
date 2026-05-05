@@ -1,0 +1,59 @@
+projects:
+  name: "Forex-Signal-Pipeline"
+  version: "1.0.0"
+
+data:
+  pairs:
+    - "EURUSD"
+    - "GBPUSD"
+  intervals: "1d"
+  period_years: 5
+  raw_path : "data/raw"
+  processed_path : "data/processed"
+  features_path: "data/features"
+
+features:
+  rsi_period: 14
+  macd_fast: 12
+  macd_slow: 26
+  macd_signal: 9
+  bb_period: 20
+  atr_period: 14
+  sma_periods: [10,20,50]
+  prediction_horizon: 5
+
+models:
+  prophet:
+    changepoint_prior _scale: 0.05
+    seasonality_mode = "multiplicative"
+  lstm:
+    sequence_length: 60
+    units: [64,32]
+    dropout: 0.2
+    epochs: 50
+    batch_size: 32
+
+  ensemble:
+    weights:
+      prophet: 0.3
+      lstm: 0.4
+      sklearn: 0.3
+
+backtesting:
+  train_months: 36
+  test_months: 6
+  sharpe_threshold: 1.0
+  risk_free_rate: 0.05
+
+mlflow:
+  tracking_uri: "http://localhost:5000"
+  experiment_name: "forex-signal-pipeline"
+
+serving:
+  host: "0.0.0.0"
+  port: 8000
+
+dashboard:
+  port: 8501
+
+EOF 

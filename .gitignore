@@ -25,6 +25,6 @@ mlruns/
 # OS
 .DS_Store
 *.log
+logs/
 
 EOF
-/data

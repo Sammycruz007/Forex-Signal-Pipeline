@@ -2,7 +2,7 @@
 yfinance==0.2.40
 pandas==2.2.2
 numpy==1.26.4
-pandas-ta==0.3.14b0
+pandas-ta-classic == 0.5.44
 
 # Models
 prophet==1.1.5
@@ -12,6 +12,7 @@ joblib==1.4.2
 optuna ==3.6.1
 lightgbm ==4.3.0 
 xgboost ==2.0.3
+
 # Experiment Tracking
 mlflow==2.13.0
 

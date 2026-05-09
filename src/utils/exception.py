@@ -36,7 +36,7 @@ class DataProcessingError(ForexPipelineError):
     Raised when data transformer or cleaning fails.
     Examples: resampling error, type conversion failure
     """
-    pass
+pass
 
 # Feature Engineering Exceptions
 class FeatureEngineeringError(ForexPipelineError):
@@ -90,6 +90,6 @@ class PipelineConfigError(ForexPipelineError):
     Raised when config.yaml is missing required fields or has invalid values.
     """
     pass
-EOF
+
 
 

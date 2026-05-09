@@ -1,14 +1,14 @@
 from src.utils.logger import log
-from src.utils.exception import (
-     ForexPipelineError, 
-     DataIngestionError, 
-     DataValidationError, 
-     DataProcessingError, 
-     FeatureEngineeringError, 
-     ModelTrainingError, 
-     ModelLoadError, 
-     ModelPredictionError
+from src.utils.exceptions import (
+    ForexPipelineError,
+    DataIngestionError,
+    DataValidationError,
+    DataProcessingError,
+    FeatureEngineeringError,
+    ModelTrainingError,
+    ModelLoadError,
+    ModelPredictionError,
+    BacktestError,
+    SharpeThresholdError,
+    PipelineConfigError,
 )
-EOF
-
-# This means in every future module, imports will look like this.

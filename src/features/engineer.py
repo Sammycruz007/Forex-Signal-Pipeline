@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import pandas_ta as ta
+import pandas_ta_classic as ta
 from pathlib import Path
 from typing import Tuple
 
@@ -391,4 +391,3 @@ def run_feature_engineering() -> dict:
 
 if __name__ == "__main__":
     run_feature_engineering()
-EOF

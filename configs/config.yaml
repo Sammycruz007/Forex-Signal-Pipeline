@@ -1,18 +1,15 @@
-projects:
-  name: "Forex-Signal-Pipeline"
-  version: "1.0.0"
+project:
+  name: forex-signal-pipeline
+  version: 1.0.0
 
 data:
   pairs:
-    - "EURUSD"
-    - "GBPUSD"
-    - "EURJPY"
-    - "GBPJPY"
-  intervals: "1d"
+    - EURUSD=X
+  interval: 1d
   period_years: 5
-  raw_path : "data/raw"
-  processed_path : "data/processed"
-  features_path: "data/features"
+  raw_path: data/raw
+  processed_path: data/processed
+  features_path: data/features
 
 features:
   rsi_period: 14
@@ -21,41 +18,39 @@ features:
   macd_signal: 9
   bb_period: 20
   atr_period: 14
-  sma_periods: [10,20,50]
+  sma_periods: [10, 20, 50]
   prediction_horizon: 5
 
 models:
   prophet:
-    changepoint_prior _scale: 0.05
-    seasonality_mode = "multiplicative"
+    n_trials: 20
   lstm:
-    sequence_length: 60
-    units: [64,32]
+    n_trials: 10
+    sequence_length: 20
+    units: [32, 16]
     dropout: 0.2
-    epochs: 50
+    epochs: 20
     batch_size: 32
-
+  sklearn:
+    n_trials: 30
   ensemble:
-    weights:
-      prophet: 0.3
-      lstm: 0.4
-      sklearn: 0.3
+    n_weight_trials: 100
 
 backtesting:
-  train_months: 36
-  test_months: 6
+  train_months: 24
+  test_months: 3
   sharpe_threshold: 1.0
   risk_free_rate: 0.05
 
 mlflow:
-  tracking_uri: "http://localhost:5000"
-  experiment_name: "forex-signal-pipeline"
+  tracking_uri: http://127.0.0.1:5000
+  experiment_name: forex-signal-pipeline
+  model_registry:
+    EURUSD: forex-ensemble-EURUSD
 
 serving:
-  host: "0.0.0.0"
+  host: 0.0.0.0
   port: 8000
 
 dashboard:
   port: 8501
-
-EOF 

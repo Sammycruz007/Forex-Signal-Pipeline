@@ -1,5 +1,3 @@
-import socket
-socket.setdefaulttimeout(30)
 import yfinance as yf
 import pandas as pd
 from pathlib import Path

@@ -347,4 +347,3 @@ def train_lstm(
     }
 
     return final_model, results
-EOF

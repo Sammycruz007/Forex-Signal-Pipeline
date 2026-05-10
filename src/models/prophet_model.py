@@ -278,4 +278,3 @@ def train_prophet(
     }
 
     return final_model, results
-EOF

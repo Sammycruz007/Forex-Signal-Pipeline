@@ -238,4 +238,3 @@ class EnsemblePredictor:
         predictor = joblib.load(path)
         log.info(f"Ensemble predictor loaded from {path}")
         return predictor
-EOF

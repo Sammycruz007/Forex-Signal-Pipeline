@@ -29,12 +29,12 @@ models:
     sequence_length: 20
     units: [32, 16]
     dropout: 0.2
-    epochs: 20
+    epochs: 18
     batch_size: 32
   sklearn:
-    n_trials: 30
+    n_trials: 20
   ensemble:
-    n_weight_trials: 100
+    n_weight_trials: 20
 
 backtesting:
   train_months: 24

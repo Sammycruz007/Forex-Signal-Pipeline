@@ -1,22 +1,25 @@
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential git && \
+    rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
-
+# 1. Install Core Requirements (Fast, unlikely to change often)
+COPY requirements-core.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir numpy==1.26.4 && \
-    pip install --no-cache-dir pyarrow==15.0.2 && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir -r requirements-core.txt
 
+# 2. Install Heavy Requirements (Slow, cached until file changes)
+COPY requirements-dev.txt .
+RUN pip install --no-cache-dir -r requirements-dev.txt
+
+# 3. Finally, copy your application code
 COPY . .
 
+# Install your package in editable mode
 RUN pip install -e .
 
-EXPOSE 8000
-
-CMD ["uvicorn", "src.serving.app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
